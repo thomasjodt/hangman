@@ -1,0 +1,22 @@
+{
+  "name": "hangman",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open --port 3000 --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "vite": "^3.1.0"
+  },
+  "main": "index.js",
+  "author": "thomasjodt <jodt5200@gmail.com> (https://thomasjodt.github.io/)",
+  "license": "MIT"
+}
