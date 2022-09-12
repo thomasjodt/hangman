@@ -9,7 +9,6 @@ export let usedLetters = []
 export const getWord = async () => {
   const res = await fetch(API)
   const data = await res.json()
-  // console.log(data.body.Word)
   const word = data.body.Word
   const spelledWord = [...word.toLowerCase()]
   palabra.push(...spelledWord)
@@ -38,13 +37,17 @@ const resetGame = async () => {
 
 export const setMessage = (message, state, hint = true) => {
   const $message = $('.message')
-  const template = `
-  <p>${message}</p>
-  <button id='reset' class='${state === 'win' ? 'win' : 'loose'}'>Reset</button>
-  `
-  $message.innerHTML = template
-  const $reset = $('#reset')
-  $reset.onclick = () => resetGame()
+
+  const customMessage = document.createElement('p')
+  customMessage.innerText = message
+
+  const button = document.createElement('button')
+  button.id = 'reset'
+  button.innerText = 'Reset'
+  button.classList.add(state === 'win' ? 'win' : 'loose')
+  button.onclick = resetGame
+
+  $message.append(customMessage, button)
 }
 
 export const validateLetter = (input, spelledWord) => {
@@ -58,20 +61,19 @@ export const validateLetter = (input, spelledWord) => {
     if ($word.every(e => e.classList.contains('active'))) {
       setMessage('Felicidades, has ganado', 'win')
       $inputValidator.setAttribute('readonly', true)
-    } else {
-      console.log('Correcto, completa la palabra.')
+      $('#form').onsubmit = e => e.preventDefault()
     }
     return
   }
   if (lives > 1) {
     lives -= 1
-    console.log('Incorrecto, te quedan: ' + lives + ' oportunidades.')
-    $lives.innerHTML = lives
+    $lives.innerText = lives
     return
   }
   if (lives === 1) {
-    $lives.innerHTML = 0
+    $lives.innerText = 0
     $inputValidator.setAttribute('readonly', true)
     setMessage('Has perdido, la palabra era: ' + spelledWord.join(''))
+    $('#form').onsubmit = e => e.preventDefault()
   }
 }
