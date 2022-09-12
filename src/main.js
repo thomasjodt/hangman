@@ -5,6 +5,6 @@ import { addListenerToInput, addWordSpaces, loadInitialPaint } from './modules/p
 
 loadInitialPaint()
 addListenerToInput()
-await getWord()
+getWord()
 addWordSpaces()
 $('.inputValidator').focus()

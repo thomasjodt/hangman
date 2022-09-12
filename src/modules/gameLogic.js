@@ -1,16 +1,14 @@
+import { data } from './data'
 import { addListenerToInput, addWordSpaces, loadInitialPaint } from './paintLayout'
-import { $ } from './utils'
+import { $, generateRandomNumber, removeAccents } from './utils'
 
-const API = 'https://palabras-aleatorias-public-api.herokuapp.com/random'
 export let lives = 11
 export let palabra = []
 export let usedLetters = []
 
-export const getWord = async () => {
-  const res = await fetch(API)
-  const data = await res.json()
-  const word = data.body.Word
-  const spelledWord = [...word.toLowerCase()]
+export const getWord = () => {
+  const word = data[generateRandomNumber(0, data.length)]
+  const spelledWord = [...removeAccents(word.toLowerCase())]
   palabra.push(...spelledWord)
 }
 
@@ -22,7 +20,7 @@ const addActiveClass = (input, spelledWord) => {
     }
   })
 }
-const resetGame = async () => {
+const resetGame = () => {
   const $word = $('#word')
   lives = 11
   palabra = []
@@ -30,7 +28,7 @@ const resetGame = async () => {
   loadInitialPaint()
   addListenerToInput()
   $word.innerHTML = ''
-  await getWord()
+  getWord()
   addWordSpaces()
   $('.inputValidator').focus()
 }
