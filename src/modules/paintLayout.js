@@ -1,4 +1,5 @@
-import { lives, palabra, usedLetters, validateLetter } from './gameLogic'
+import { lives, palabra } from './gameLogic'
+import { keyboard } from './keyboard'
 import { $ } from './utils'
 
 export const loadInitialPaint = () => {
@@ -12,34 +13,13 @@ export const loadInitialPaint = () => {
         </div>
       </section>
       <section id='bottom-section'>
-        <form id='form'>
-          <input class='inputValidator' maxlength='1' placeholder='Aa' />
-        </form>
         <div id='word'></div>
+        ${keyboard()}
         <div class='message'></div>
       </section>
     </div>
   `
   document.body.innerHTML = template
-}
-
-export const addListenerToInput = () => {
-  const $form = $('#form')
-  $form.onsubmit = (e) => {
-    e.preventDefault()
-
-    const input = e.target.children[0].value
-    validateLetter(input, palabra)
-    if (!usedLetters.includes(input)) {
-      usedLetters.push(input)
-    } else if (lives > 1 && palabra.includes(input)) {
-      $('.message').innerHTML = '<p>Ya has usado esa letra, prueba con otra.</p>'
-    }
-
-    e.target.children[0].onchange = () => { $('.message').innerHTML = null }
-    e.target.reset()
-    e.target.children[0].focus()
-  }
 }
 
 const addWordField = (letter, index) => {
@@ -55,4 +35,12 @@ export const addWordSpaces = () => {
   palabra.forEach((e, index) => {
     $word.append(addWordField(e, index))
   })
+}
+
+export const addKeyboardListener = () => {
+  const $keyboard = $('#keyboard')
+  $keyboard.onclick = (e) => {
+    if (e.target.innerHTML.length !== 1) return
+    console.log(e.target.innerHTML)
+  }
 }

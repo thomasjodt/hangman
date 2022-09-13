@@ -1,5 +1,5 @@
 import { data } from './data'
-import { addListenerToInput, addWordSpaces, loadInitialPaint } from './paintLayout'
+import { addWordSpaces, loadInitialPaint } from './paintLayout'
 import { $, generateRandomNumber, removeAccents } from './utils'
 
 export let lives = 11
@@ -26,7 +26,6 @@ const resetGame = () => {
   palabra = []
   usedLetters = []
   loadInitialPaint()
-  addListenerToInput()
   $word.innerHTML = ''
   getWord()
   addWordSpaces()

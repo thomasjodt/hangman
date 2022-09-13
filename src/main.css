@@ -15,7 +15,7 @@
 }
 
 html {
-  font-family: 62.5%;
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
@@ -107,13 +107,14 @@ input:read-only::placeholder {
 }
 
 .wordSpace {
-  height: 48px;
-  min-width: 48px;
-  border-bottom: 4px solid var(--text-color);
+  max-height: 48px;
+  min-width: 24px;
+  /* padding-inline: 8px; */
+  border-bottom: 2px solid var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   color: transparent;
   text-transform: uppercase;
   user-select: none;
@@ -155,4 +156,53 @@ input:read-only::placeholder {
 }
 .message button.loose:hover {
   background-color: var(--loose-reset-color-hover);
+}
+
+#keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-block: 32px;
+}
+
+.layer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.key {
+  width: 32px;
+  height: 42px;
+  background-color: var(--second-color);
+  color: var(--text-color);
+  text-align: center;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  transition: all 50ms ease;
+}
+
+.key:active {
+  background-color: var(--text-color);
+  color: var(--second-color);
+}
+.key:disabled {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+@media (hover: hover) {
+  .key:hover {
+    background-color: var(--text-color);
+    color: var(--second-color);
+  }
+
+  .key:disabled {
+    background-color: var(--primary-color);
+    color: var(--primary-color);
+  }
 }
