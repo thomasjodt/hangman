@@ -1,4 +1,4 @@
-import { lives, palabra } from './gameLogic'
+import { lives, palabra, validateLetter } from './gameLogic'
 import { keyboard } from './keyboard'
 import { $ } from './utils'
 
@@ -40,7 +40,10 @@ export const addWordSpaces = () => {
 export const addKeyboardListener = () => {
   const $keyboard = $('#keyboard')
   $keyboard.onclick = (e) => {
+    $('.message').innerHTML = ''
+    e.target.setAttribute('disabled', true)
     if (e.target.innerHTML.length !== 1) return
-    console.log(e.target.innerHTML)
+    const input = e.target.innerHTML
+    validateLetter(input, palabra)
   }
 }
