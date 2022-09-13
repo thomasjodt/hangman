@@ -19,6 +19,7 @@ const addActiveClass = (input, spelledWord) => {
     }
   })
 }
+
 const resetGame = () => {
   $('#word').innerHTML = null
   lives = 11
@@ -29,9 +30,7 @@ const resetGame = () => {
   addWordSpaces()
 }
 
-export const setMessage = (message, state, hint = true) => {
-  const $message = $('.message')
-
+export const setMessage = (message, state) => {
   const customMessage = document.createElement('p')
   customMessage.innerText = message
 
@@ -41,7 +40,9 @@ export const setMessage = (message, state, hint = true) => {
   button.classList.add(state === 'win' ? 'win' : 'loose')
   button.onclick = resetGame
 
-  $message.append(customMessage, button)
+  $('#keyboard').innerHTML = ''
+  $('#keyboard').classList.add('message')
+  $('#keyboard').append(customMessage, button)
 }
 
 export const validateLetter = (input, spelledWord) => {

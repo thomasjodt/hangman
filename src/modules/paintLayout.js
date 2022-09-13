@@ -15,7 +15,6 @@ export const loadInitialPaint = () => {
       <section id='bottom-section'>
         <div id='word'></div>
         ${keyboard()}
-        <div class='message'></div>
       </section>
     </div>
   `
@@ -31,18 +30,17 @@ const addWordField = (letter, index) => {
 }
 
 export const addWordSpaces = () => {
-  const $word = $('#word')
   palabra.forEach((e, index) => {
-    $word.append(addWordField(e, index))
+    $('#word').append(addWordField(e, index))
   })
 }
 
 export const addKeyboardListener = () => {
   const $keyboard = $('#keyboard')
   $keyboard.onclick = (e) => {
-    $('.message').innerHTML = ''
-    e.target.setAttribute('disabled', true)
     if (e.target.innerHTML.length !== 1) return
+
+    e.target.setAttribute('disabled', true)
     const input = e.target.innerHTML
     validateLetter(input, palabra)
   }
