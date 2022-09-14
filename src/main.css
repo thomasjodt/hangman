@@ -22,8 +22,10 @@ html {
 body {
   font-size: 1.6rem;
   width: 100%;
+  min-height: 100vh;
   background-color: var(--body-color);
   color: var(--text-color);
+  padding-bottom: 3.6rem;
 }
 
 button {
@@ -43,16 +45,9 @@ h1 {
 }
 
 #game-container {
-  min-height: 90vh;
+  height: 100%;
   padding-block: 64px;
   position: relative;
-}
-
-#bottom-section {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 #word {
@@ -66,14 +61,15 @@ h1 {
 }
 
 .lives {
-  font-size: 1rem;
+  font-size: 1.6rem;
   margin-top: 24px;
-  margin-inline: 16px;
+  margin-inline: auto;
   padding: 4px;
   border-radius: 8px;
   text-align: center;
   color: var(--text-color);
   border: 2px solid var(--text-color);
+  width: 130px;
 }
 #lives {
   font-size: 2rem;
@@ -81,6 +77,10 @@ h1 {
   border-radius: 4px;
   padding: 4px;
   background-color: var(--body-color);
+}
+
+#top-section {
+  margin-bottom: 100px;
 }
 
 .wordSpace {
@@ -94,9 +94,11 @@ h1 {
   color: transparent;
   text-transform: uppercase;
   user-select: none;
+  transition: color 400ms;
 }
 .wordSpace.active {
   color: var(--text-color);
+  border: 1px solid transparent;
 }
 
 .message {
@@ -172,6 +174,13 @@ h1 {
   color: var(--primary-color);
 }
 
+.hint {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: var(--second-color)
+}
+
 @media (hover: hover) {
   .key:hover {
     background-color: var(--text-color);
@@ -181,5 +190,14 @@ h1 {
   .key:disabled {
     background-color: var(--primary-color);
     color: var(--primary-color);
+  }
+  .hint:hover {
+    color: var(--text-color);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #keyboard {
+    transform: scale(0.8);
   }
 }

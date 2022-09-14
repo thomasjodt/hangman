@@ -16,7 +16,14 @@ export const loadInitialPaint = () => {
         <div id='word'></div>
         ${keyboard()}
       </section>
-    </div>
+      </div>
+      <a
+        href='https://github.com/thomasjodt/hangman'
+        class='hint'
+        target='_blank'
+      >
+        View the source code here
+      </a>
   `
   document.body.innerHTML = template
 }
@@ -26,6 +33,8 @@ const addWordField = (letter, index) => {
   container.classList.add('wordSpace')
   container.id = index
   container.innerText = letter
+
+  if (container.innerText === ' ') container.classList.add('active')
   return container
 }
 

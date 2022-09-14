@@ -53,7 +53,7 @@ export const validateLetter = (input, spelledWord) => {
     addActiveClass(lowerInput, spelledWord)
 
     if ($word.every(e => e.classList.contains('active'))) {
-      setMessage('Felicidades, has ganado', 'win')
+      setMessage('Felicidades, has ganado.', 'win')
     }
     return
   }
