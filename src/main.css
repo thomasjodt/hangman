@@ -80,6 +80,15 @@ h1 {
   margin-bottom: 100px;
 }
 
+.hangman-pic {
+  width: 200px;
+  height: 200px;
+  margin: 48px auto;
+  border-radius: 24px;
+  /* background-color: var(--text-color); */
+  border: 2px solid var(--text-color);
+}
+
 .wordSpace {
   max-height: 48px;
   min-width: 24px;
@@ -118,7 +127,6 @@ h1 {
   border: 1px solid transparent;
   color: var(--text-color);
   font-size: 1.8rem;
-  text-transform: uppercase;
 }
 
 .message button.win {
@@ -172,9 +180,9 @@ h1 {
 }
 
 .hint {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
+  display: block;
+  text-align: end;
+  margin-right: 16px;
   color: var(--second-color)
 }
 

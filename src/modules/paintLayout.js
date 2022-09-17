@@ -10,6 +10,7 @@ export const loadInitialPaint = () => {
         <div class='lives'>
           <span id='lives'>${lives}</span>
         </div>
+        <div class='hangman-pic'></div>
       </section>
       <section id='bottom-section'>
         <div id='word'></div>
