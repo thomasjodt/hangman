@@ -60,6 +60,15 @@ export const validateLetter = (input, spelledWord) => {
   if (lives > 1) {
     lives -= 1
     $lives.innerText = lives
+    if (lives === 10) {
+      const img = document.createElement('img')
+      img.src = './assets/Step10.svg'
+      img.alt = 'hangman status'
+      img.id = 'hangman-status'
+      $('.hangman-pic').append(img)
+      return
+    }
+    $('#hangman-status').src = `./assets/Step${lives}.svg`
     return
   }
   if (lives === 1) {

@@ -8,9 +8,9 @@ export const loadInitialPaint = () => {
       <section id='top-section'>
         <h1>Juego del ahorcado</h1>
         <div class='lives'>
-          <span>Vidas restantes: </span>
           <span id='lives'>${lives}</span>
         </div>
+        <div class='hangman-pic'></div>
       </section>
       <section id='bottom-section'>
         <div id='word'></div>
