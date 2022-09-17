@@ -47,7 +47,6 @@ export const addWordSpaces = () => {
 export const addKeyboardListener = () => {
   $('#keyboard').onclick = (e) => {
     if (e.target.innerHTML.length !== 1) return
-    console.log('clic')
     e.target.setAttribute('disabled', true)
     const input = e.target.innerHTML
     validateLetter(input, palabra)
